@@ -116,8 +116,8 @@ module Devise
 
         # Required to workaround confirmable model's confirmation_required? method
         # being implemented to check for non-nil value of confirmed_at
-        if self.new_record? && self.respond_to?(:confirmation_required?)
-          def self.confirmation_required?; false; end
+        if self.new_record? && self.respond_to?(:confirmed?)
+          def self.confirmed?; true; end
         end
 
         generate_invitation_token if self.invitation_token.nil?
